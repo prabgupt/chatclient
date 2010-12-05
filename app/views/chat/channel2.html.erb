@@ -1,0 +1,31 @@
+<html>
+<head>
+    <title>Chat Client</title>
+<style type="text/css" media="screen">
+    h1 {
+      margin: 1em 0;
+    }
+  </style>
+<%= javascript_include_tag 'jquery', 'application' %>
+  </head>
+<body>
+<script src="http://localhost:8080/application.js" type="text/javascript" charset="utf-8"></script>
+<div id="mesg"></div>
+<script type="text/javascript" charset="utf-8">
+
+    var jug = new Juggernaut();
+
+    $("#mesg").append($("<li/>").append("Subscribing to channel1_channel2"));
+   jug.subscribe("/chats/channel1_channel2", function(data){
+var li = $("<li/>");
+li.text(data);
+$("#mesg").append(li);
+}); 
+</script>
+<% form_tag('/chat/send', :id => 'chat_window', :remote => true) do %>
+<%= text_field_tag 'msg_body', '', :size => 50 %>
+<%= hidden_field_tag 'sender', 'channel2'%>
+<%= submit_tag 'Send Message' %>
+<% end %>
+<body>
+</html>
