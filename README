@@ -33,7 +33,7 @@ Steps::
 	git clone git://github.com/prabgupt/chatclient.git --recursive
 	cd chatclient
 	
-5. To enable publishing by Juggernaut, run: sudo gem install juggernaut
+5. To enable publishing by Juggernaut, run: bundle install
 
 6. run rails server: rails server
 
